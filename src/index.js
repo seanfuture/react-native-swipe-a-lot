@@ -192,12 +192,18 @@ export default class SwipeALot extends Component {
             )
           }
         })()}
-        <Circles store={this.store} emitter={this.emitter}
-          circleWrapperStyle={this.props.circleWrapperStyle}
-          circleDefaultStyle={this.props.circleDefaultStyle}
-          circleActiveStyle={this.props.circleActiveStyle}>
-          {this.props.children}
-        </Circles>
+        {(() => {
+          if (typeof this.props.showPager == 'undefined' || !!this.props.showPager) {
+            return (
+              <Circles store={this.store} emitter={this.emitter}
+                circleWrapperStyle={this.props.circleWrapperStyle}
+                circleDefaultStyle={this.props.circleDefaultStyle}
+                circleActiveStyle={this.props.circleActiveStyle}>
+                {this.props.children}
+              </Circles>
+            )
+          }
+        })()}
       </View>
     )
   }
